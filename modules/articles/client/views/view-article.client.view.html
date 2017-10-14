@@ -1,0 +1,41 @@
+<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1 data-ng-bind="article.title"></h1>
+  </div>
+  <div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
+    <a class="btn btn-primary" data-ui-sref="articles.edit({articleId: article._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      articleed on
+      <span data-ng-bind="article.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-bind="article.user.displayName"></span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="article.content"></p>
+<div ng-repeat="comment in article.comments" >
+  {{comment.content}}
+  {{comment.author.displayName}}
+</div>
+
+  <form name="vm.form.articleForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+    <fieldset>
+      <div class="form-group" show-errors>
+        <textarea ui-tinymce="tinymceOptions" cols="50" rows="15" ng-model="article.articleComment" id="articleComment" class="form-control" placeholder="content" ></textarea>
+      </div>
+      <div class="form-group pull-right">
+        <button type="submit" class="btn btn-default">Comment</button>
+      </div>
+      <div ng-show="vm.error" class="text-danger">
+        <strong ng-bind="vm.error"></strong>
+      </div>
+
+    </fieldset>
+  </form>
+</section>

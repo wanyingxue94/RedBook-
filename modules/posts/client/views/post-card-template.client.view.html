@@ -1,0 +1,34 @@
+<div class="dynamic-layout-item dynamic-layout-col-4 bootcards-cards" ng-controller="PostsCardTemplateController" >
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left"></h3>
+            <!--<a class="btn btn-default pull-right" href="#">
+                ...
+            </a>-->
+            <div class="pull-right"
+                 ng-show="it.data.post.isCurrentUserOwner">
+                <a class="btn btn-primary"
+                   ui-sref="posts.edit({ postId: it.data.post._id })">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-primary" ng-click="vm.remove()">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                <p class="list-group-item-text" ng-bind-html="it.data.post.body">
+                </p>
+            </div>
+        </div>
+        <div class="panel-footer" >
+            <small class="pull-left">Created on {{it.data.post.created | date:'medium'}}</small>
+        </div>
+        <!--<div class="panel-footer">
+            <button class="pull-left btn btn-default" ng-show='!showingMoreText' ng-click='toggleText()'>Show more
+            </button>
+            <button class="pull-left btn btn-default" ng-show='showingMoreText' ng-click='toggleText()'>Less</button>
+        </div>-->
+    </div>
+</div>

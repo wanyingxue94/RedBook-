@@ -1,0 +1,40 @@
+<!-- The chat view -->
+<section class="container" data-ng-controller="ChatController">
+  <div class="page-header">
+    <h1>Public Chat</h1>
+  </div>
+
+  <ul class="list-unstyled">
+    <!-- List all messages -->
+    <li class="col-xs-12 col-md-offset-3 col-md-4 chat-message" data-ng-repeat="message in messages | orderBy: 'created'">
+      <div ng-show="authentication.user.username==message.username">
+        <small class="pull-left text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+        <img style="margin: 5px" data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" class="pull-right chat-profile-image" />
+        <div style="margin-top: 5px" class="pull-right chat-message-details">
+          <span data-ng-bind="message.text"></span>
+        </div>
+      </div>
+      <div ng-hide="authentication.user.username==message.username">
+        <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+        <img style="margin: 5px" data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" class="pull-left chat-profile-image" />
+        <div class="pull-left chat-message-details" style="margin-top: 5px">
+          <span data-ng-bind="message.text"></span>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <!-- The message form -->
+  <div class="divider"></div>
+  <form class="col-xs-12 col-md-offset-4 col-md-4 " ng-submit="sendMessage();">
+    <fieldset class="row">
+      <div class="input-group">
+        <input type="text" id="messageText" name="messageText" class="form-control" data-ng-model="messageText" placeholder="Enter new message">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </span>
+      </div>
+      <div ng-show=""></div>
+
+    </fieldset>
+  </form>
+</section>
