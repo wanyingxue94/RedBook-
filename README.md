@@ -91,7 +91,7 @@ If you encounter any problems, try the Troubleshooting section.
 * explore `config/env/development.js` for development environment configuration options
 
 ### Running in Production mode
-To run your application with *production* environment configuration, execute grunt as follows:
+To run your application with *production* environment configuration, execute grunt as  follows:
 
 ```bash
 $ grunt prod
